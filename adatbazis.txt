@@ -1,0 +1,32 @@
+CREATE DATABASE viragbolt
+    DEFAULT CHARACTER SET utf8mb4 
+    COLLATE utf8mb4_hungarian_ci;
+
+USE viragbolt;
+
+CREATE TABLE IF NOT EXISTS kategoriak (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    nev VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS aruk (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    nev VARCHAR(255) NOT NULL,
+    kategoriaId INTEGER,
+    leiras TEXT,
+    keszlet INTEGER DEFAULT 0 ,
+    ar INTEGER,
+    kepUrl TEXT,
+    FOREIGN KEY(kategoriaId) REFERENCES kategoriak(id) ON DELETE SET NULL
+);
+
+INSERT INTO kategoriak (nev) VALUES 
+('Virágok'),
+('Fák'),
+('Cserjék');
+
+INSERT INTO aruk (nev, kategoriaId, leiras, keszlet, ar, kepUrl) VALUES
+('Rózsa', 1, 'A rózsa a rózsafélék (Rosaceae) családjába tartozó növények közös neve. A rózsafélék családjába mintegy 100-150 faj tartozik, melyek a mérsékelt égövön őshonosak.', 10, 1000, 'https://balintgazda.hu/images/cache/121cc69d156f9647581477a2c413ffb8_w758.jpg'),
+('Tulipán', 1, 'A tulipán (Tulipa) a liliomfélék (Liliaceae) családjába tartozó növények nemzetsége. A tulipánok a törökországi Szökevény-hegységben őshonosak.', 20, 800, 'https://www.csomagpostas.hu/assets/product/tulipany-10-kusu-umelych-kvetin-s-postovnym-zdarma/orig/7308.jpg'),
+('Levendula', 1, 'A levendula (Lavandula) az árvacsalánfélék családjába tartozó növény. A Földközi-tenger mediterrán vidékén őshonos, de jól alkalmazkodik a környezethez.', 15, 690, 'https://gyongypatikak.hu/uploads/cover/ZHJlYW1zdGltZV9tXzIwMTUwMTU2.jpg'),
+('Viaszvirág', 1, 'A viaszvirág (Hoya), más néven porcelánvirág vagy viaszszőlő a selyemkórófélék (Asclepiadaceae) családjába tartozó növénynemzetség. Őshazája Délkelet-Ázsia (India, tőle keletre Dél-Kínáig és az ettől délre eső területek), Ausztrália és Polinézia.', 6, 2100, 'https://ankert.hu/wp-content/uploads/2018/02/Hoya-carnosa.jpg');

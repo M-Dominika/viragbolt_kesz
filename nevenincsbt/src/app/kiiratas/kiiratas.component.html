@@ -1,0 +1,27 @@
+<table class="table table-danger table-striped fs-5">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Név</th>
+            <th>Kategória id</th>
+            <th>Kategória név</th>
+            <th>Leírás</th>
+            <th>Készlet (db)</th>
+            <th>Ár (forint)</th>
+            <th>Kép</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let flower of flowers">
+            <td>{{flower.id}}</td>
+            <td>{{flower.nev}}</td>
+            <td>{{flower.kategoria.id}}</td>
+            <td>{{flower.kategoria.nev}}</td>
+            <td>{{flower.leiras}}</td>
+            <td>{{flower.keszlet}}</td>
+            <td>{{flower.ar}}</td>
+            <td><img src="{{flower.kepUrl}}" title="{{flower.nev}}" alt="{{flower.nev}}" height="100rem" width="150rem">
+            </td>
+        </tr>
+    </tbody>
+</table>
