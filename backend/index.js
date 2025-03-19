@@ -102,9 +102,9 @@ app.post('/api/flowers', (req, res) => {
 //  PUT - adat módosítás id alapján
 app.put('/api/flowers/:id', (req, res) => {
     const { id } = req.params
-    const { keszlet } = req.body
-    const lekerdezes = 'UPDATE aruk SET keszlet = ? WHERE id = ?'
-    adatb.query(lekerdezes, [keszlet, id], (err, results) => {
+    const adatok = req.body
+    const lekerdezes = 'UPDATE aruk SET ? WHERE id = ?'
+    adatb.query(lekerdezes, [adatok, id], (err, results) => {
         if (err) {
             return res.status(404).json({ error : "A virág nem található!" })
         }

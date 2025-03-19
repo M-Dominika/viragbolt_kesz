@@ -1,6 +1,6 @@
 <div>
     <header>
-        <a href="index"><img src="./sunflower.jpg" alt="fa" id="logo" /></a>
+        <a href=""><img src="./sunflower.jpg" alt="fa" id="logo" /></a>
         <h1>Nevenincs Bt.</h1>
         <h2>Vetőmagok - Mindenféle, minden mennyiségben</h2>
     </header>
@@ -9,10 +9,9 @@
             <h2>Vetőmagjaink:</h2>
             <div *ngFor="let virag of viragok" class="col-lg-4 mt-4 arukep">
                 <h4>{{virag.nev}}</h4>
-                <a href="megrendeles"><img src="{{virag.kepUrl}}" alt="{{virag.nev}}" class="img-fluid viragkep"></a>
-            </div>
+                <div (click)="kivalasztott(virag.id)"><img src="{{virag.kepUrl}}" alt="{{virag.nev}}" class="img-fluid viragkep"></div>
+            </div>			
         </div>      
-        
     </main>
     <footer class="container">
         <div class="row">

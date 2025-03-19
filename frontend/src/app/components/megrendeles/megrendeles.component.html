@@ -1,0 +1,58 @@
+<div>
+    <header>
+        <a href=""><img src="./sunflower.jpg" alt="fa" id="logo" /></a>
+        <h1>Nevenincs Bt.</h1>
+        <h2>Vetőmagok - Mindenféle, minden mennyiségben</h2>
+    </header>
+    <main *ngFor="let virag of viragok" class="container">
+        <h2>{{virag.nev}} ({{virag.kategoria.nev}})</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{virag.kepUrl}}" alt="{{virag.nev}}" class="img-thumbnail">
+            </div>
+            <div class="col-md-6">
+                <p>{{virag.leiras}}</p>
+                <form>
+                    <p class="text-center"><span id="ar">Ár: {{virag.ar}}Ft</span></p>
+                    <div *ngIf="virag.keszlet>0; else nincs">
+                        <p class="text-center">
+                            <label for="mennyiseg">Mennyiség:</label>
+                            <input type="number" name="mennyiseg" id="mennyiseg" min="1" max="{{virag.keszlet}}"
+                                value="1" [(ngModel)]="rendelt_darab" />
+                        </p>
+                        <p class="text-center">
+                            <button class="btn btn-warning btn-lg" (click)="rendeles(virag.id)">Megrendelem</button>
+                        </p>
+                    </div>
+                    <ng-template #nincs>
+                        <p class="text-center">Jelenleg nincs a termékből készleten, keresse fel oldalunkat később!</p>
+                    </ng-template>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="container">
+        <div class="row">
+            <div class="col-md-4 col-lg-2">
+                <h3>Nyitvatartás:</h3>
+            </div>
+            <div class="col-md-8 col-lg-4">
+                <ul>
+                    <li>Hétfő-Péntek: 8-17 óráig</li>
+                    <li>Szombat: 8-13 óráig</li>
+                    <li>Vasárnap: 9-12 óráig</li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-lg-2">
+                <h3>Kapcsolat:</h3>
+            </div>
+            <div class="col-md-8 col-lg-4">
+                <ul>
+                    <li>06-30/111-1111</li>
+                    <li>06-70/111-1111</li>
+                    <li>nevenincsbt&#64;gmail.com</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>

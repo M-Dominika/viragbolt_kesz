@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
-import { AdatokService } from '../adatok.service';
+import { AdatokService } from '../../services/adatok.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aruk',
@@ -11,8 +11,7 @@ import { AdatokService } from '../adatok.service';
 export class ArukComponent {
 
   viragok: any[] = [];
-
-  constructor(private adatok:AdatokService) {}
+  constructor(private adatok:AdatokService, private router:Router) {}
 
   ngOnInit(){
     this.lekeres();
@@ -22,6 +21,11 @@ export class ArukComponent {
     this.adatok.get().subscribe((adat) => {
       this.viragok = adat;
     });
+  }
+
+  kivalasztott(id:number){
+    this.adatok.id_mentes(id);
+    this.router.navigate(["megrendeles"]);
   }
 
 }
